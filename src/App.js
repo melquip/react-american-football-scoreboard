@@ -39,8 +39,8 @@ function App() {
   }
   
   const [down, setDown] = useState(1);
-  const [toGo, setToGo] = useState(9);
-  const [ballOn, setBallOn] = useState(1);
+  const [toGo, setToGo] = useState(3);
+  const [ballOn, setBallOn] = useState(20);
   const [quarter, setQuarter] = useState(1);
 
   const onClickDown = () => {
@@ -58,8 +58,11 @@ function App() {
   const onClickBallOn = () => {
     setBallOn(ballOn + 1);
   }
+
+  const [resetTimer, setResetTimer] = useState(false)
   const onClickQuarter = () => {
-    setQuarter(quarter + 1)
+    setQuarter(quarter + 1);
+    setResetTimer(true);
   }
 
   return (
@@ -68,6 +71,9 @@ function App() {
         <TopRow 
           homeScore={homeScore}
           awayScore={awayScore}
+          addQuarter={onClickQuarter}
+          resetTimer={resetTimer}
+          setResetTimer={setResetTimer}
         />
         <BottomRow
           down={down}

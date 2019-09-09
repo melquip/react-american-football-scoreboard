@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
-const Timer = () => {
-  const [seconds, setSeconds] = useState(0);
+const Timer = ({ reset, setReset, onEnd }) => {
+  const [seconds, setSeconds] = useState(55);
   const [minutes, setMinutes] = useState(0);
 
   useEffect(() => {
@@ -11,6 +11,17 @@ const Timer = () => {
         setMinutes(minutes + 1);
       } else {
         setSeconds(seconds + 1);
+      }
+      if(minutes >= 1 || reset === true) {
+        if(!reset) {
+          onEnd();
+        } else {
+          setReset(false);
+        }
+        setSeconds(0);
+        setMinutes(0);
+        clearInterval(interval)
+        return false;
       }
     }, 1000);
     return () => clearInterval(interval);
