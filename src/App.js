@@ -9,7 +9,7 @@ function App() {
   //TODO: STEP 2 - Establish your applictaion's state with some useState hooks.  You'll need one for the home score and another for the away score.
   const [homeScore, setHomeScore] = useState(0);
   const [awayScore, setAwayScore] = useState(0);
-
+  /*
   const onClickHomeTouchdown = () => {
     setHomeScore(homeScore + 7);
   }
@@ -22,6 +22,20 @@ function App() {
   const onClickAwayFieldGoal = () => {
     setAwayScore(awayScore + 3);
   }
+  */
+  const onClickSetTeamScore = (team, points) => {
+    switch(team) {
+      case 'home':
+        setHomeScore(homeScore + points)
+        break;
+      case 'away':
+        setAwayScore(awayScore + points)
+        break;
+      default:
+        console.error(`The team ${team} doesn't exist!`);
+        break;
+    }
+  }
 
   return (
     <div className="container">
@@ -32,12 +46,7 @@ function App() {
         />
         <BottomRow />
       </section>
-      <Buttons
-        onClickHomeTouchdown={onClickHomeTouchdown}
-        onClickHomeFieldGoal={onClickHomeFieldGoal}
-        onClickAwayTouchdown={onClickAwayTouchdown}
-        onClickAwayFieldGoal={onClickAwayFieldGoal}
-      />
+      <Buttons onClickSetTeamScore={onClickSetTeamScore} />
     </div>
   );
 }
