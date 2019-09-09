@@ -6,7 +6,7 @@
 .scoreboard {
   width: 58%;
   margin: 10rem auto;
-  background-color: #0b5402;
+  background-color: #29679b;
   color: white;
   border-radius: 0.5rem;
   margin-top: 10rem;
@@ -71,6 +71,7 @@
   background-color: var(--black);
   border: 2px solid white;
   border-radius: 6px;
+  font-variant-numeric: tabular-nums;
 }
 
 .bottomRow {
