@@ -23,6 +23,7 @@ function App() {
     setAwayScore(awayScore + 3);
   }
   */
+  // stretch
   const onClickSetTeamScore = (team, points) => {
     switch(team) {
       case 'home':
@@ -36,6 +37,30 @@ function App() {
         break;
     }
   }
+  
+  const [down, setDown] = useState(1);
+  const [toGo, setToGo] = useState(9);
+  const [ballOn, setBallOn] = useState(1);
+  const [quarter, setQuarter] = useState(1);
+
+  const onClickDown = () => {
+    if(toGo > 0) {
+      setDown(down + 1);
+      setToGo(toGo - 1);
+    } else console.error(`There are no more To Go`)
+  }
+  const onClickToGo = () => {
+    if(down > 0) {
+      setDown(down - 1);
+      setToGo(toGo + 1);
+    } else console.error(`There are no more Down`)
+  }
+  const onClickBallOn = () => {
+    setBallOn(ballOn + 1);
+  }
+  const onClickQuarter = () => {
+    setQuarter(quarter + 1)
+  }
 
   return (
     <div className="container">
@@ -44,9 +69,20 @@ function App() {
           homeScore={homeScore}
           awayScore={awayScore}
         />
-        <BottomRow />
+        <BottomRow
+          down={down}
+          toGo={toGo}
+          ballOn={ballOn}
+          quarter={quarter}
+        />
       </section>
-      <Buttons onClickSetTeamScore={onClickSetTeamScore} />
+      <Buttons 
+        onClickSetTeamScore={onClickSetTeamScore}
+        onClickDown={onClickDown}
+        onClickToGo={onClickToGo}
+        onClickBallOn={onClickBallOn}
+        onClickQuarter={onClickQuarter}
+      />
     </div>
   );
 }
