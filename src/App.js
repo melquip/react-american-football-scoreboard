@@ -39,21 +39,17 @@ function App() {
   }
   
   const [down, setDown] = useState(1);
-  const [toGo, setToGo] = useState(3);
+  const [toGo, setToGo] = useState(7);
   const [ballOn, setBallOn] = useState(20);
   const [quarter, setQuarter] = useState(1);
 
   const onClickDown = () => {
-    if(toGo > 0) {
+    if(down < 4) {
       setDown(down + 1);
-      setToGo(toGo - 1);
-    } else console.error(`There are no more To Go`)
+    }
   }
   const onClickToGo = () => {
-    if(down > 0) {
-      setDown(down - 1);
-      setToGo(toGo + 1);
-    } else console.error(`There are no more Down`)
+    setToGo(toGo + 1);
   }
   const onClickBallOn = () => {
     setBallOn(ballOn + 1);
@@ -61,8 +57,10 @@ function App() {
 
   const [resetTimer, setResetTimer] = useState(false)
   const onClickQuarter = () => {
-    setQuarter(quarter + 1);
-    setResetTimer(true);
+    if(quarter < 4) {
+      setQuarter(quarter + 1);
+      setResetTimer(true);
+    }
   }
 
   return (
@@ -71,6 +69,7 @@ function App() {
         <TopRow 
           homeScore={homeScore}
           awayScore={awayScore}
+          quarter={quarter}
           addQuarter={onClickQuarter}
           resetTimer={resetTimer}
           setResetTimer={setResetTimer}
