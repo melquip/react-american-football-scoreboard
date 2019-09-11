@@ -6,7 +6,7 @@
 .scoreboard {
   width: 58%;
   margin: 10rem auto;
-  background-color: #0b5402;
+  background-color: #29679b;
   color: white;
   border-radius: 0.5rem;
   margin-top: 10rem;
@@ -71,6 +71,7 @@
   background-color: var(--black);
   border: 2px solid white;
   border-radius: 6px;
+  font-variant-numeric: tabular-nums;
 }
 
 .bottomRow {
@@ -110,13 +111,21 @@
   width: 50%;
   margin: 0 auto;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
 }
 
-.homeButtons__touchdown,
-.homeButtons__fieldGoal,
-.awayButtons__touchdown,
-.awayButtons__fieldGoal {
+.buttons button {
   margin: 1rem;
   border-radius: 4px;
+}
+
+.homeButtons, .awayButtons {
+  width: 50%;
+  flex-basis: 50%;
+}
+.gameButtons {
+  margin-top: 2rem;
+  width: 100%;
+  flex-basis: 100%;
 }
